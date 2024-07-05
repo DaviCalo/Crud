@@ -17,12 +17,12 @@ fun EditView(navController: NavController) {
     CRUDTheme {
         Scaffold(
             topBar = { },
-            bottomBar = { TabBar(navController = navController, screen = 3) }
+            bottomBar = { TabBar(navController = navController, screen = 2) }
         ) { innerPadding ->
             Column(
                 modifier = Modifier.padding(innerPadding)
             ) {
-
+  println("home2")
             }
         }
     }

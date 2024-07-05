@@ -5,13 +5,23 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import crud.example.com.ui.navigation.createScreenRoute
 import crud.example.com.ui.navigation.createViewNavigation
+import crud.example.com.ui.navigation.deleteScreenRoute
 import crud.example.com.ui.navigation.deleteViewNavigation
+import crud.example.com.ui.navigation.editScreenRoute
 import crud.example.com.ui.navigation.editViewNavigation
 import crud.example.com.ui.navigation.homeScreenNavigation
 import crud.example.com.ui.navigation.homeScreenRoute
+import androidx.navigation.NavController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +36,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = homeScreenRoute) {
+
+    LaunchedEffect(Unit) {
+        navController.popBackStack(editScreenRoute, inclusive = false)
+        navController.popBackStack(deleteScreenRoute, inclusive = false)
+        navController.popBackStack(createScreenRoute, inclusive = false)
+        navController.popBackStack(homeScreenRoute, inclusive = false)
+    }
+
+    NavHost(navController = navController, startDestination = createScreenRoute) {
         homeScreenNavigation(navController)
         createViewNavigation(navController)
         editViewNavigation(navController)

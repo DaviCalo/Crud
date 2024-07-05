@@ -8,16 +8,22 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.crud.R
+import crud.example.com.ui.navigation.createScreenRoute
+import crud.example.com.ui.navigation.deleteScreenRoute
+import crud.example.com.ui.navigation.editScreenRoute
+import crud.example.com.ui.navigation.homeScreenRoute
 import crud.example.com.ui.theme.CRUDTheme
 
 @Composable
@@ -25,6 +31,7 @@ fun TabBar(navController: NavController?, screen: Int){
     var selectedItem by remember { mutableIntStateOf(screen) }
     val items = listOf("Home", "Criar","Alterar", "Deletar")
     val itemsIcon = listOf(R.drawable.icon_home, R.drawable.icon_pen, R.drawable.iconicon_email, R.drawable.icon_person)
+    val navigates = listOf(homeScreenRoute, createScreenRoute, editScreenRoute, deleteScreenRoute)
     CRUDTheme {
         NavigationBar(
             containerColor = Color.Transparent,
@@ -46,7 +53,12 @@ fun TabBar(navController: NavController?, screen: Int){
                         unselectedTextColor = MaterialTheme.colorScheme.onSecondary,
                     ),
                     selected = selectedItem == index,
-                    onClick = { selectedItem = index }
+                    onClick = {
+                        if (selectedItem != index){
+                            navController?.popBackStack(navigates[index], inclusive = false)
+                        }
+                        selectedItem = index
+                    }
                 )
             }
         }

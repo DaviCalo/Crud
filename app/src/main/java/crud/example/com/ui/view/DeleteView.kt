@@ -17,12 +17,12 @@ fun DeleteView(navController: NavController) {
     CRUDTheme {
         Scaffold(
             topBar = { },
-            bottomBar = { TabBar(navController = navController, screen = 4) }
+            bottomBar = { TabBar(navController = navController, screen = 3) }
         ) { innerPadding ->
             Column(
                 modifier = Modifier.padding(innerPadding)
             ) {
-
+                println("home3")
             }
         }
     }
