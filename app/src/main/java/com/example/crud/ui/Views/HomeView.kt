@@ -41,7 +41,7 @@ fun HomeView(navController: NavController){
                         selected = selectedItem == index,
                         onClick = { selectedItem = index },
                         shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
-                        icon = { Icon(painter = painterResource(R.drawable.icon_pen), contentDescription = "asd") }
+
                     ){
                         Text(text = option)
                     }
