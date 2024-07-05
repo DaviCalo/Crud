@@ -1,4 +1,4 @@
-package com.example.crud.ui.theme
+package crud.example.com.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

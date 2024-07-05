@@ -1,4 +1,4 @@
-package com.example.crud
+package crud.example.com
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

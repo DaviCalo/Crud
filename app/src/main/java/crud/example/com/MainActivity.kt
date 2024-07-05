@@ -1,4 +1,4 @@
-package com.example.crud
+package crud.example.com
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,8 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.example.crud.ui.navigation.homeScreenNavigation
-import com.example.crud.ui.navigation.homeScreenRoute
+import crud.example.com.ui.navigation.createViewNavigation
+import crud.example.com.ui.navigation.deleteViewNavigation
+import crud.example.com.ui.navigation.editViewNavigation
+import crud.example.com.ui.navigation.homeScreenNavigation
+import crud.example.com.ui.navigation.homeScreenRoute
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,5 +28,8 @@ fun App() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = homeScreenRoute) {
         homeScreenNavigation(navController)
+        createViewNavigation(navController)
+        editViewNavigation(navController)
+        deleteViewNavigation(navController)
     }
 }

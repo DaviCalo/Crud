@@ -1,4 +1,4 @@
-package com.example.crud.ui.theme
+package crud.example.com.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -10,7 +10,7 @@ private val DarkColors = darkColorScheme(
     primary = BluePrimary,
     secondary = BlueSecondary,
     tertiary = BlueTertiary,
-    onPrimary = TextQuaternary,
+    onPrimary = BlueSecondary,
     primaryContainer = TextQuaternary,
     onSecondary = TextSecondary,
     onTertiary = TextTertiary,

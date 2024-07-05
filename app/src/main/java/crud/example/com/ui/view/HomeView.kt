@@ -1,9 +1,9 @@
-package com.example.crud.ui.Views
+package crud.example.com.ui.view
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SegmentedButton
@@ -16,13 +16,11 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.crud.R
-import com.example.crud.ui.components.TabBar
-import com.example.crud.ui.theme.CRUDTheme
+import crud.example.com.ui.components.TabBar
+import crud.example.com.ui.theme.CRUDTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -31,19 +29,22 @@ fun HomeView(navController: NavController){
     CRUDTheme {
         Scaffold(
             topBar = { },
-            bottomBar = { TabBar(navController = navController, screen = 1) }
+            bottomBar = { TabBar(navController = navController, screen = 0) }
         ) { innerPadding ->
-            val options = listOf("1","2","3")
-            Text(text = "sa", modifier = Modifier.padding(innerPadding), color = MaterialTheme.colorScheme.primary)
-            SingleChoiceSegmentedButtonRow {
-                options.forEachIndexed { index, option ->
-                    SegmentedButton(
-                        selected = selectedItem == index,
-                        onClick = { selectedItem = index },
-                        shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
-
-                    ){
-                        Text(text = option)
+            Column(
+                modifier = Modifier.padding(innerPadding)
+            ) {
+                val options = listOf("1","2","3")
+                Text(text = "sa", modifier = Modifier.padding(innerPadding), color = MaterialTheme.colorScheme.primary)
+                SingleChoiceSegmentedButtonRow {
+                    options.forEachIndexed { index, option ->
+                        SegmentedButton(
+                            selected = selectedItem == index,
+                            onClick = { selectedItem = index },
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
+                        ){
+                            Text(text = option)
+                        }
                     }
                 }
             }
@@ -51,20 +52,13 @@ fun HomeView(navController: NavController){
     }
 }
 
-//options.forEachIndexed{ index, option ->
-//    SegmentedButton(
-//        selected = selectedItem == index,
-//        onClick = { selectedItem == index },
-//        shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size)
-//    )
-
 @Preview(
     showBackground = true,
     uiMode = Configuration.UI_MODE_NIGHT_NO,
     name = "Default Preview Dark"
 )
 @Composable
-fun PreviewTabBar(){
+fun PreviewHome(){
     val navController = rememberNavController()
     HomeView(navController)
 }

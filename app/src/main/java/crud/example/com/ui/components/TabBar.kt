@@ -1,4 +1,4 @@
-package com.example.crud.ui.components
+package crud.example.com.ui.components
 
 import android.content.res.Configuration
 import androidx.compose.material3.Icon
@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.crud.R
-import com.example.crud.ui.theme.CRUDTheme
+import crud.example.com.ui.theme.CRUDTheme
 
 @Composable
 fun TabBar(navController: NavController?, screen: Int){
@@ -42,8 +42,8 @@ fun TabBar(navController: NavController?, screen: Int){
                         selectedIconColor = MaterialTheme.colorScheme.primary,
                         selectedTextColor=  MaterialTheme.colorScheme.onPrimary,
                         indicatorColor = MaterialTheme.colorScheme.secondary,
-                        unselectedIconColor = MaterialTheme.colorScheme.primaryContainer,
-                        unselectedTextColor = MaterialTheme.colorScheme.primaryContainer,
+                        unselectedIconColor = MaterialTheme.colorScheme.onSecondary,
+                        unselectedTextColor = MaterialTheme.colorScheme.onSecondary,
                     ),
                     selected = selectedItem == index,
                     onClick = { selectedItem = index }
@@ -55,7 +55,8 @@ fun TabBar(navController: NavController?, screen: Int){
 
 @Preview(
     showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    backgroundColor = 5,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
     name = "Default Preview Dark"
 )
 @Composable
