@@ -14,7 +14,4 @@ fun NavGraphBuilder.homeScreenNavigation(navController: NavHostController) {
         HomeView(navController)
     }
 
-    fun NavController.navToHomeScreen(navOptions: NavOptions? = null) {
-        navigate(homeScreenRoute, navOptions)
-    }
 }

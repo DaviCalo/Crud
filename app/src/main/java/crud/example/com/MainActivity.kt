@@ -22,6 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,15 +37,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
     val navController = rememberNavController()
-
-    LaunchedEffect(Unit) {
-        navController.popBackStack(editScreenRoute, inclusive = false)
-        navController.popBackStack(deleteScreenRoute, inclusive = false)
-        navController.popBackStack(createScreenRoute, inclusive = false)
-        navController.popBackStack(homeScreenRoute, inclusive = false)
-    }
-
-    NavHost(navController = navController, startDestination = createScreenRoute) {
+    NavHost(navController = navController, startDestination = homeScreenRoute) {
         homeScreenNavigation(navController)
         createViewNavigation(navController)
         editViewNavigation(navController)

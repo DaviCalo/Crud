@@ -3,7 +3,9 @@ package crud.example.com.ui.view
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,7 +24,11 @@ fun EditView(navController: NavController) {
             Column(
                 modifier = Modifier.padding(innerPadding)
             ) {
-  println("home2")
+                var cu = 0
+                Text("asdasda")
+                Button(onClick = { cu = cu + 1 }) {
+
+                }
             }
         }
     }
