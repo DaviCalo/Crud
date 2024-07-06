@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import crud.example.com.ui.view.DeleteView
+import crud.example.com.ui.screens.DeleteView
 
 internal const val deleteScreenRoute = "DeleteView"
 

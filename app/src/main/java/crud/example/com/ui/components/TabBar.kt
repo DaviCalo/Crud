@@ -37,7 +37,6 @@ fun TabBar(navController: NavController?, screen: Int){
             containerColor = Color.Transparent,
         ){
             items.forEachIndexed { index, item ->
-
                 NavigationBarItem(
                     icon = { Icon(painter = painterResource(itemsIcon[index]), contentDescription = item) },
                     label = {
@@ -55,7 +54,9 @@ fun TabBar(navController: NavController?, screen: Int){
                     selected = selectedItem == index,
                     onClick = {
                         if (selectedItem != index){
-                            navController?.popBackStack(navigates[index], inclusive = false)
+                            navController?.navigate(navigates[index]){
+                                launchSingleTop = true
+                            }
                         }
                         selectedItem = index
                     }
