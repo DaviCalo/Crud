@@ -21,9 +21,8 @@ fun EditView(navController: NavController) {
             Column(
                 modifier = Modifier.padding(innerPadding)
             ) {
-                var cu = 0
                 Text("asdasda")
-                Button(onClick = { cu = cu + 1 }) {
+                Button(onClick = { }) {
                 }
             }
         }
