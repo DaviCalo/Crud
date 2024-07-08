@@ -6,15 +6,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import crud.example.com.ui.screens.EditView
+import kotlinx.serialization.Serializable
 
-internal const val editScreenRoute = "EditView"
+@Serializable
+object EditScreenRoute
 
 fun NavGraphBuilder.editViewNavigation(navController: NavHostController) {
-    composable(editScreenRoute) {
+    composable<EditScreenRoute> {
         EditView(navController)
-    }
-
-    fun NavController.navEditView(navOptions: NavOptions? = null) {
-        navigate(editScreenRoute, navOptions)
     }
 }

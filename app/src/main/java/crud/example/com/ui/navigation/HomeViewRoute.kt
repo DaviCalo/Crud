@@ -4,11 +4,13 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import crud.example.com.ui.screens.HomeView
+import kotlinx.serialization.Serializable
 
-internal const val homeScreenRoute = "HomeScreen"
+@Serializable
+object HomeScreenRoute
 
 fun NavGraphBuilder.homeScreenNavigation(navController: NavHostController) {
-    composable(homeScreenRoute) {
+    composable<HomeScreenRoute> {
         HomeView(navController)
     }
 

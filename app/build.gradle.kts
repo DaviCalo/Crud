@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.devtools.ksp") version "1.9.20-1.0.14"
+    kotlin("plugin.serialization") version "2.0.0"
 }
 
 android {
@@ -93,5 +94,5 @@ dependencies {
 
 //    // Serialization
 //    implementation(libs.kotlinx.serialization.json)
-//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
 }
