@@ -5,8 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import crud.example.com.ui.view.EditView
-import crud.example.com.ui.view.HomeView
+import crud.example.com.ui.screens.EditView
 
 internal const val editScreenRoute = "EditView"
 
