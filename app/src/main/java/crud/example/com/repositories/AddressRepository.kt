@@ -20,10 +20,6 @@ class TodoRepository(private val dao: ToDoDao) {
     suspend fun delete(id: String) = withContext(IO){
         dao.delete(id)
     }
-
-//    fun getById(id: String): Flow<ToDo> = dao.getById(id)
-//    suspend fun insert(todo: ToDo) = dao.insert(todo)
-//    fun delete(id: String) = dao.delete(id)
 }
 
 fun TodoModel.toEntity() = ToDoEntity(
