@@ -16,7 +16,7 @@ fun EditView(navController: NavController) {
     CRUDTheme {
         Scaffold(
             topBar = { },
-            bottomBar = { TabBar(navController = navController, screen = 2) }
+//            bottomBar = { TabBar(navController = navController, screen = 2) }
         ) { innerPadding ->
             Column(
                 modifier = Modifier.padding(innerPadding)
@@ -24,7 +24,6 @@ fun EditView(navController: NavController) {
                 var cu = 0
                 Text("asdasda")
                 Button(onClick = { cu = cu + 1 }) {
-
                 }
             }
         }

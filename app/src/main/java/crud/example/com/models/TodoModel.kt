@@ -6,6 +6,7 @@ data class TodoModel(
     val id: String = UUID.randomUUID().toString(),
     val title: String,
     val description: String,
-    val data: Int,
+    val data: String,
+    val time: String,
     val status: String,
 )

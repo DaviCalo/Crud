@@ -10,25 +10,38 @@ import com.example.crud.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
+//    bodyLarge = TextStyle(
+//        fontFamily = FontFamily.Default,
+//        fontWeight = FontWeight.Normal,
+//        fontSize = 16.sp,
+//        lineHeight = 24.sp,
+//        letterSpacing = 0.5.sp
+//    ),
+    labelSmall = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter, FontWeight.W400)),
+        fontWeight = FontWeight.W400,
+        letterSpacing = 0.5.sp
+    ),
+    labelMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter_medium, FontWeight.W500)),
+        fontWeight = FontWeight.W500,
+        letterSpacing = 0.5.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter_semibold, FontWeight.W600)),
+        fontWeight = FontWeight.W600,
         letterSpacing = 0.5.sp
     ),
     bodyMedium = TextStyle(
-        fontFamily = FontFamily(Font(R.font.inter_semibold, FontWeight.W600)),
-        fontWeight = FontWeight.W600,
-        fontSize = 12.sp,
+        fontFamily = FontFamily(Font(R.font.inter_bold, FontWeight.W700)),
+        fontWeight = FontWeight.W700,
         letterSpacing = 0.5.sp
     ),
-    labelLarge = TextStyle(
-        fontFamily = FontFamily(Font(R.font.inter, FontWeight.W500)),
-        fontWeight = FontWeight.W500,
-        fontSize = 12.sp,
-        letterSpacing = 0.5.sp
-    )
+   bodyLarge = TextStyle(
+       fontFamily = FontFamily(Font(R.font.inter_extrabold, FontWeight.W800)),
+       fontWeight = FontWeight.W700,
+       letterSpacing = 0.5.sp
+   )
 
 
     /* Other default text styles to override

@@ -5,10 +5,11 @@ import androidx.room.PrimaryKey
 import java.util.UUID
 
 @Entity
-data class ToDoEntity (
+data class ToDoTaksEntity (
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
     val title: String,
     val description: String,
-    val data: Int,
+    val data: String,
+    val time: String,
     val status: String
 )
