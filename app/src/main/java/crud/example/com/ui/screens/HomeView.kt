@@ -39,6 +39,7 @@ import androidx.navigation.NavController
 import com.example.crud.R
 import crud.example.com.ui.components.CardTodo
 import crud.example.com.ui.components.ChoiceSegmentedButton
+import crud.example.com.ui.components.ExtendedActionButton
 import crud.example.com.ui.components.TabBar
 import crud.example.com.ui.theme.CRUDTheme
 import crud.example.com.ui.viewmodels.HomeViewModel
@@ -50,26 +51,15 @@ import org.koin.androidx.compose.koinViewModel
 fun HomeView(navController: NavController){
     val viewModel = koinViewModel<HomeViewModel>()
     val scope = rememberCoroutineScope()
-    val listState = rememberLazyListState()
-    val expandedFab by remember { derivedStateOf { listState.firstVisibleItemIndex == 0 } }
     CRUDTheme {
         Scaffold(
             modifier = Modifier.background(MaterialTheme.colorScheme.background).systemBarsPadding(),
             topBar = { TabBar() },
-            floatingActionButton = {
-                ExtendedFloatingActionButton(
-                    containerColor = MaterialTheme.colorScheme.secondary,
-                    onClick = { /* do something */ },
-                    expanded = expandedFab,
-                    icon = { Icon(Icons.Filled.Add, "Localized Description") },
-                    text = {  Text("Adicionar", style = MaterialTheme.typography.bodyMedium) },
-
-                )
-            },
+            floatingActionButton = { ExtendedActionButton({ /* TODO */ }) },
             floatingActionButtonPosition = FabPosition.End,
             ) { innerPadding ->
             Column(
-                modifier = Modifier.padding(innerPadding).padding(12.dp)
+                modifier = Modifier.padding(innerPadding).padding(12.dp,0.dp)
             ) {
                 ChoiceSegmentedButton(onChoiceOneClicked = { viewModel.selectedItem = 1 }, onChoiceSecondClicked = { viewModel.selectedItem = 2 }, onChoiceThirdClicked = { viewModel.selectedItem = 3})
                 when(viewModel.selectedItem){

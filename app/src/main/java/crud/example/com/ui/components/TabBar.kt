@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -42,16 +43,20 @@ fun TabBar(){
         horizontalArrangement = Arrangement.Center
     ) {
         Box(
-            modifier = Modifier.fillMaxWidth().padding(15.dp, 10.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp, 5.dp),
             contentAlignment = Alignment.Center
         ){
             Text(text = "Sua lista", fontSize = 20.sp, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.align(
                 Alignment.Center))
-            Icon(
-                painter = painterResource(id = R.drawable.icon_search),
-                contentDescription = "Lupa",
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.align(Alignment.CenterEnd))
+            IconButton(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.CenterEnd)) {
+                Icon(
+                    painter = painterResource(id = R.drawable.icon_search),
+                    contentDescription = "Lupa",
+                    tint = MaterialTheme.colorScheme.primary,
+                )
+            }
         }
     }
 }
