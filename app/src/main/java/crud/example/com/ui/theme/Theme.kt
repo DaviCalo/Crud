@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 
 private val DarkColors = darkColorScheme(
     primary = BluePrimary,
-    secondary = BlueSecondary,
+    secondary = darkSecondary,
     tertiary = BlueTertiary,
     onPrimary = BlueSecondary,
     primaryContainer = TextQuaternary,

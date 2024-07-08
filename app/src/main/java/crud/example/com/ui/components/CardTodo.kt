@@ -38,7 +38,7 @@ import org.koin.core.time.Timer
 
 @Composable
 fun CardTodo(title: String, description: String, status: String, data: String, time: String){
-    var expandedState by remember { mutableStateOf(true) }
+    var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
         targetValue = if (expandedState) 180f else 0f
     )
@@ -46,7 +46,7 @@ fun CardTodo(title: String, description: String, status: String, data: String, t
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(15.dp, 5.dp)
+                .padding(0.dp, 5.dp)
                 .clip(shape = RoundedCornerShape(12.dp))
                 .border(1.dp, MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(12.dp))
                 .clickable { expandedState = !expandedState }

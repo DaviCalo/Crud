@@ -13,7 +13,7 @@ import java.util.UUID
 class HomeViewModel(
     private val repository: TodoRepository
 ) : ViewModel() {
-    var selectedItem by mutableIntStateOf(2)
+    var selectedItem by mutableIntStateOf(1)
 
 
     suspend fun deleteAllCard(){

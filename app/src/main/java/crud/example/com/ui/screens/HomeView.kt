@@ -1,5 +1,6 @@
 package crud.example.com.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -30,12 +32,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.crud.R
 import crud.example.com.ui.components.CardTodo
 import crud.example.com.ui.components.ChoiceSegmentedButton
+import crud.example.com.ui.components.ExtendedActionButton
 import crud.example.com.ui.components.TabBar
 import crud.example.com.ui.theme.CRUDTheme
 import crud.example.com.ui.viewmodels.HomeViewModel
@@ -47,28 +51,22 @@ import org.koin.androidx.compose.koinViewModel
 fun HomeView(navController: NavController){
     val viewModel = koinViewModel<HomeViewModel>()
     val scope = rememberCoroutineScope()
-    val listState = rememberLazyListState()
-    val expandedFab by remember { derivedStateOf { listState.firstVisibleItemIndex == 0 } }
     CRUDTheme {
         Scaffold(
-            modifier = Modifier.systemBarsPadding(),
-            topBar = { TabBar()},
-            floatingActionButton = {
-                ExtendedFloatingActionButton(
-                    onClick = { /* do something */ },
-                    expanded = expandedFab,
-                    icon = { Icon(Icons.Filled.Add, "Localized Description") },
-                    text = {  Text("Adicionar", style = MaterialTheme.typography.bodyMedium) },
-                )
-            },
+            modifier = Modifier.background(MaterialTheme.colorScheme.background).systemBarsPadding(),
+            topBar = { TabBar() },
+            floatingActionButton = { ExtendedActionButton({ /* TODO */ }) },
             floatingActionButtonPosition = FabPosition.End,
             ) { innerPadding ->
             Column(
-                modifier = Modifier.padding(innerPadding)
+                modifier = Modifier.padding(innerPadding).padding(12.dp,0.dp)
             ) {
                 ChoiceSegmentedButton(onChoiceOneClicked = { viewModel.selectedItem = 1 }, onChoiceSecondClicked = { viewModel.selectedItem = 2 }, onChoiceThirdClicked = { viewModel.selectedItem = 3})
                 when(viewModel.selectedItem){
-                    1 -> CardTodo("Fazer taks", "It is a long established fact that a reader will be distracted by the readable", "Pendente", "10/10/2023", "12:14")
+                    1 -> {
+                        CardTodo("Fazer taks", "It is a long established fact that a reader will be distracted by the readable", "Pendente", "10/10/2023", "12:14")
+                        CardTodo("Fazer taks", "It is a long established fact that a reader will be distracted by the readable", "Pendente", "10/10/2023", "12:14")
+                    }
                     2 -> Text("Alterar")
                     3 -> Text("Deletar")
                 }
