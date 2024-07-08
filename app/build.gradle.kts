@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.devtools.ksp")
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
+    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
 }
 
 android {
@@ -73,21 +72,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //Room e kps
-//    implementation(libs.androidx.room.runtime)
-//    annotationProcessor(libs.androidx.room.compiler)
-//    implementation(libs.room.runtime)
-//    kapt(libs.androidx.room.room.compiler2)
-//    implementation(libs.androidx.room.ktx)
-    val room_version = "2.6.1"
-
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-
-     //To use Kotlin annotation processing tool (kapt)
-//    ksp("androidx.room:room-compiler:$room_version")
-     //To use Kotlin Symbol Processing (KSP)
-    implementation(libs.androidx.room.room.compiler4)
+    //Room
+    implementation("androidx.room:room-runtime:2.6.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+    ksp("androidx.room:room-compiler:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
 
     // Koin
     implementation(libs.koin.android)

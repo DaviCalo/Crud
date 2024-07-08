@@ -38,14 +38,18 @@ fun HomeView(navController: NavController){
             Column(
                 modifier = Modifier.padding(innerPadding)
             ) {
-//                Button(onClick = {
-//                    scope.launch {
-//                        viewModel.insert("title", "description", 1, "status")
-//                    }
-//                }) {
-
-
-//                }
+                Button(onClick = {
+                    scope.launch {
+                        try{
+                            viewModel.insert("title", "description", 1, "status")
+                            println("asd")
+                        }catch (e: Exception){
+                            println(e.message)
+                        }
+                    }
+                }) {
+                    Text(text = "Insert")
+                }
 //                val options = listOf("1","2","3")
 //                Text(text = "sa", modifier = Modifier.padding(innerPadding), color = MaterialTheme.colorScheme.primary)
 //                SingleChoiceSegmentedButtonRow {
