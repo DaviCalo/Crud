@@ -15,9 +15,7 @@ class HomeViewModel(
 
     val allTodos get() = repository.allTodos.toString()
 
-    var page: String by mutableIntStateOf("")
 
-    page = allTodos
 
     suspend fun insert(
         title: String,
