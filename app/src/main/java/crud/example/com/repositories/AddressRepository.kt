@@ -1,7 +1,7 @@
 package crud.example.com.repositories
 
 import crud.example.com.database.dao.ToDoDao
-import crud.example.com.database.entities.ToDoEntity
+import crud.example.com.database.entities.ToDoTaksEntity
 import crud.example.com.models.TodoModel
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.Dispatchers.IO
@@ -20,13 +20,18 @@ class TodoRepository(private val dao: ToDoDao) {
     suspend fun delete(id: String) = withContext(IO){
         dao.delete(id)
     }
+
+    suspend fun deleteAll() = withContext(IO){
+        dao.deleteAll()
+    }
 }
 
-fun TodoModel.toEntity() = ToDoEntity(
+fun TodoModel.toEntity() = ToDoTaksEntity(
     id = this.id,
     title = this.title,
     description = this.description,
     data = this.data,
+    time = this.time,
     status = this.status
 )
 

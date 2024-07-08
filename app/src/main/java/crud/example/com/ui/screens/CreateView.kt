@@ -14,7 +14,7 @@ fun CreateView(navController: NavController) {
     CRUDTheme {
         Scaffold(
             topBar = { },
-            bottomBar = { TabBar(navController = navController, screen = 1) }
+//            bottomBar = { TabBar(navController = navController, screen = 1) }
         ) { innerPadding ->
             Column(
                 modifier = Modifier.padding(innerPadding)
