@@ -18,7 +18,7 @@ val storageModule = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            ToDoDatabase::class.java, "todo_database.db"
+            ToDoDatabase::class.java, "taks_database.db"
         ).build()
     }
     single { get<ToDoDatabase>().todoDao() }
