@@ -18,3 +18,5 @@ val TextPrimary = Color(0xFF1F2024)
 val TextSecondary = Color(0xFF71727A)
 val TextTertiary = Color(0xFFFFFFFF)
 val TextQuaternary = Color(0xFFD4D6DD)
+
+val darkSecondary = Color(0xFF080357)

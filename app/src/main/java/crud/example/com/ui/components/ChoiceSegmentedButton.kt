@@ -25,10 +25,10 @@ import crud.example.com.ui.theme.CRUDTheme
 fun ChoiceSegmentedButton(onChoiceOneClicked: () -> Unit, onChoiceSecondClicked: () -> Unit, onChoiceThirdClicked: () -> Unit){
     var selectedItem by remember { mutableIntStateOf(0) }
     val listFun = listOf(onChoiceOneClicked, onChoiceSecondClicked, onChoiceThirdClicked)
-    val options = listOf("Pendentes","Em progresso","Concluídos")
+    val options = listOf("Pendentes","Progresso","Concluídos")
     CRUDTheme {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(0.dp, 15.dp),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
