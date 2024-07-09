@@ -8,10 +8,12 @@ import org.koin.dsl.module
 import crud.example.com.database.ToDoDatabase
 import crud.example.com.repositories.TodoRepository
 import crud.example.com.ui.viewmodels.HomeViewModel
+import crud.example.com.ui.viewmodels.CreateViewModel
 
 val appModule = module {
     singleOf(::TodoRepository)
     viewModelOf(::HomeViewModel)
+    viewModelOf(::CreateViewModel)
 }
 
 val storageModule = module {

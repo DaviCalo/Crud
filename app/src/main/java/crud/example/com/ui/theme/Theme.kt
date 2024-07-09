@@ -41,7 +41,6 @@ fun CRUDTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-
     val colors = if (!darkTheme) {
         LightColors
     } else {

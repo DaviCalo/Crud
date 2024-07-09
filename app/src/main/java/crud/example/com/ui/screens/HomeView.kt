@@ -41,8 +41,10 @@ import crud.example.com.ui.components.CardTodo
 import crud.example.com.ui.components.ChoiceSegmentedButton
 import crud.example.com.ui.components.ExtendedActionButton
 import crud.example.com.ui.components.TabBar
+import crud.example.com.ui.navigation.createScreenRoute
 import crud.example.com.ui.theme.CRUDTheme
 import crud.example.com.ui.viewmodels.HomeViewModel
+import kotlinx.coroutines.flow.forEach
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -55,7 +57,7 @@ fun HomeView(navController: NavController){
         Scaffold(
             modifier = Modifier.background(MaterialTheme.colorScheme.background).systemBarsPadding(),
             topBar = { TabBar() },
-            floatingActionButton = { ExtendedActionButton({ /* TODO */ }) },
+            floatingActionButton = { ExtendedActionButton{navController.navigate(createScreenRoute)} },
             floatingActionButtonPosition = FabPosition.End,
             ) { innerPadding ->
             Column(
@@ -71,22 +73,15 @@ fun HomeView(navController: NavController){
                     3 -> Text("Deletar")
                 }
 
-//                scope.launch {
-//                    try {
-//                        viewModel.deleteAllCard()
-//                    }catch (e: Exception){
-//                        println(e.message)
+//                Button(onClick = {
+//                    scope.launch {
+//                        try{
+//                          viewModel.allTodos
+//                        }catch (e: Exception){
+//                            println(e.message)
+//                        }
 //                    }
-                Button(onClick = {
-                    scope.launch {
-                        try{
-                            viewModel.insert("Fazer taks", "It is a long established fact that a reader will be distracted by the readable","10/10/2023","12:14", "Pendente")
-                            println("asd")
-                        }catch (e: Exception){
-                            println(e.message)
-                        }
-                    }
-                }) { Text(text = "Insert") }
+//                }) { Text(text = "Insert") }
             }
         }
     }
