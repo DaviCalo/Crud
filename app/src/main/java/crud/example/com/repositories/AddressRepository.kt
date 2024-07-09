@@ -1,7 +1,7 @@
 package crud.example.com.repositories
 
 import crud.example.com.database.dao.ToDoDao
-import crud.example.com.database.entities.ToDoTaksEntity
+import crud.example.com.database.entities.tb_todo_list
 import crud.example.com.models.TodoModel
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.Dispatchers.IO
@@ -26,7 +26,7 @@ class TodoRepository(private val dao: ToDoDao) {
     }
 }
 
-fun TodoModel.toEntity() = ToDoTaksEntity(
+fun TodoModel.toEntity() = tb_todo_list(
     id = this.id,
     title = this.title,
     description = this.description,

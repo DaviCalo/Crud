@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.util.UUID
 
 @Entity
-data class ToDoTaksEntity (
+data class tb_todo_list (
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
     val title: String,
     val description: String,

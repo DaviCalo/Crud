@@ -21,7 +21,7 @@ class CreateViewModel(
     var status by mutableStateOf("")
     var listStatus by mutableStateOf(listOf("Pendente", "Em progresso", "Terminado"))
     var isDone by mutableStateOf(false)
-
+    var showDialog by mutableStateOf(false)
 
     fun clear(){
         title = ""
@@ -33,18 +33,18 @@ class CreateViewModel(
 
     fun insertTodo(){
         if(
-            title.isEmpty() &&
-            description.isEmpty() &&
-            data.isEmpty() &&
-            timer.isEmpty() &&
-            status.isEmpty()
+            title.isNotEmpty() &&
+            description.isNotEmpty() &&
+            data.isNotEmpty() &&
+            timer.isNotEmpty() &&
+            status.isNotEmpty()
         ){
             viewModelScope.launch {
                 insert(title, description, data, timer, status)
                 isDone = true
                 println(isDone)
             }
-        }else println("asd")
+        }else showDialog = true
     }
 
     private suspend fun insert(
