@@ -48,8 +48,7 @@ fun TabBar(){
                 .padding(12.dp, 5.dp),
             contentAlignment = Alignment.Center
         ){
-            Text(text = "Sua lista", fontSize = 20.sp, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.align(
-                Alignment.Center))
+            Text(text = "Sua lista", fontSize = 20.sp, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.align(Alignment.Center))
             IconButton(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.CenterEnd)) {
                 Icon(
                     painter = painterResource(id = R.drawable.icon_search),

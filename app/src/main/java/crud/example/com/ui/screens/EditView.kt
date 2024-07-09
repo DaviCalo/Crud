@@ -9,14 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import crud.example.com.ui.components.TabBar
+import crud.example.com.ui.components.TabBarEdit
 import crud.example.com.ui.theme.CRUDTheme
 
 @Composable
 fun EditView(navController: NavController) {
     CRUDTheme {
         Scaffold(
-            topBar = { },
-//            bottomBar = { TabBar(navController = navController, screen = 2) }
+            topBar = { TabBarEdit(navController, {}) },
         ) { innerPadding ->
             Column(
                 modifier = Modifier.padding(innerPadding)
@@ -28,6 +28,8 @@ fun EditView(navController: NavController) {
         }
     }
 }
+
+
 //
 //@Preview(
 //    showBackground = true,

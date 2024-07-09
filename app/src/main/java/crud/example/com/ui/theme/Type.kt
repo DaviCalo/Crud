@@ -41,7 +41,25 @@ val Typography = Typography(
        fontFamily = FontFamily(Font(R.font.inter_extrabold, FontWeight.W800)),
        fontWeight = FontWeight.W700,
        letterSpacing = 0.5.sp
-   )
+   ),
+    titleSmall = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter, FontWeight.W400)),
+        fontSize = 18.sp,
+        fontWeight = FontWeight.W500,
+        letterSpacing = 0.5.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter, FontWeight.W400)),
+        fontSize = 16.sp,
+        fontWeight = FontWeight.W400,
+        letterSpacing = 0.5.sp
+    ),
+    titleLarge = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter_medium, FontWeight.W500)),
+        fontSize = 24.sp,
+        fontWeight = FontWeight.W500,
+        letterSpacing = 0.5.sp
+    ),
 
 
     /* Other default text styles to override

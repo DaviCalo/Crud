@@ -1,10 +1,8 @@
 package crud.example.com.ui.viewmodels
 
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,18 +11,43 @@ import crud.example.com.repositories.TodoRepository
 import kotlinx.coroutines.launch
 import java.util.UUID
 
-class HomeViewModel(
+class CreateViewModel(
     private val repository: TodoRepository
 ) : ViewModel() {
-    var selectedItem by mutableIntStateOf(1)
+    var title by mutableStateOf("")
+    var description by mutableStateOf("")
+    var data by mutableStateOf("")
+    var timer by mutableStateOf("")
+    var status by mutableStateOf("")
+    var listStatus by mutableStateOf(listOf("Pendente", "Em progresso", "Terminado"))
+    var isDone by mutableStateOf(false)
 
-    suspend fun deleteAllCard(){
-        repository.deleteAll()
+
+    fun clear(){
+        title = ""
+        description = ""
+        data = ""
+        timer = ""
+        status = ""
     }
 
-    val allTodos get() = repository.allTodos
+    fun insertTodo(){
+        if(
+            title.isEmpty() &&
+            description.isEmpty() &&
+            data.isEmpty() &&
+            timer.isEmpty() &&
+            status.isEmpty()
+        ){
+            viewModelScope.launch {
+                insert(title, description, data, timer, status)
+                isDone = true
+                println(isDone)
+            }
+        }else println("asd")
+    }
 
-    suspend fun insert(
+    private suspend fun insert(
         title: String,
         description: String,
         data: String,
@@ -42,4 +65,5 @@ class HomeViewModel(
             )
         )
     }
+
 }
