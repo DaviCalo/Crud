@@ -31,6 +31,7 @@ import java.lang.reflect.Modifier
 
 @Composable
 fun SaveButton(navController: NavController, action: String, isDone: Boolean, onClick: () -> Unit,){
+    if(isDone) {navController.navigate(homeScreenRoute){launchSingleTop = true}}
     Row(
         modifier = androidx.compose.ui.Modifier
             .fillMaxWidth()
@@ -42,13 +43,7 @@ fun SaveButton(navController: NavController, action: String, isDone: Boolean, on
             modifier =  androidx.compose.ui.Modifier
                 .fillMaxWidth().height(45.dp),
             shape = RoundedCornerShape(10.dp),
-            onClick = {
-                onClick()
-                if(isDone) {
-                    println(isDone)
-                    navController.navigate(homeScreenRoute)
-                }
-            }
+            onClick = { onClick() }
         ) {
             Text(text = action, style = MaterialTheme.typography.bodyMedium, fontSize = 14.sp)
         }

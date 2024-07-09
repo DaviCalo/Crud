@@ -57,7 +57,7 @@ fun HomeView(navController: NavController){
         Scaffold(
             modifier = Modifier.background(MaterialTheme.colorScheme.background).systemBarsPadding(),
             topBar = { TabBar() },
-            floatingActionButton = { ExtendedActionButton{navController.navigate(createScreenRoute)} },
+            floatingActionButton = { ExtendedActionButton{ navController.navigate(createScreenRoute) { launchSingleTop = true }}},
             floatingActionButtonPosition = FabPosition.End,
             ) { innerPadding ->
             Column(
