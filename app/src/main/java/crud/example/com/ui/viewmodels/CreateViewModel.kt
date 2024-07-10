@@ -21,6 +21,7 @@ class CreateViewModel(
     var status by mutableStateOf("")
     var listStatus by mutableStateOf(listOf("Pendente", "Em progresso", "Terminado"))
     var isDone by mutableStateOf(false)
+    var isId by mutableStateOf(false)
     var showDialog by mutableStateOf(false)
 
     fun clear(){
@@ -29,6 +30,15 @@ class CreateViewModel(
         data = ""
         timer = ""
         status = ""
+    }
+
+    suspend fun edit(id: String){
+        val todo = repository.getById(id)
+        title = todo.title
+        description = todo.description
+        data = todo.data
+        timer = todo.time
+        status = todo.status
     }
 
     fun insertTodo(){
@@ -65,5 +75,4 @@ class CreateViewModel(
             )
         )
     }
-
 }

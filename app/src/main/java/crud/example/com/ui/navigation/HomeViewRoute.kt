@@ -11,5 +11,4 @@ fun NavGraphBuilder.homeScreenNavigation(navController: NavHostController) {
     composable(homeScreenRoute) {
         HomeView(navController)
     }
-
 }

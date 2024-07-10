@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -25,26 +23,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.crud.R
+import crud.example.com.ui.components.DynamicSelectTextFieldComposable
 import crud.example.com.ui.components.InputTextFieldsComposable
 import crud.example.com.ui.components.SaveButton
 import crud.example.com.ui.components.ShowDialogComposable
 import crud.example.com.ui.components.TabBarEdit
 import crud.example.com.ui.theme.CRUDTheme
 import crud.example.com.ui.viewmodels.CreateViewModel
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CreateView(navController: NavController) {
     val viewModel = koinViewModel<CreateViewModel>()
+    val scope = rememberCoroutineScope()
     CRUDTheme {
         Scaffold(
             modifier = Modifier
@@ -75,67 +76,12 @@ fun CreateView(navController: NavController) {
                     InputTextFieldsComposable(icon = R.drawable.notes, value = viewModel.description, onValueChangedEvent = { viewModel.description = it }, placeholder = "Descrição", conDescription = "description icon", modifier = Modifier.fillMaxWidth().padding(15.dp, 0.dp))
                     InputTextFieldsComposable(icon = R.drawable.calendar_today, value = viewModel.data, onValueChangedEvent = { viewModel.data = it }, placeholder = "Data", conDescription = "calendar icon", modifier = Modifier.fillMaxWidth().padding(15.dp, 0.dp))
                     InputTextFieldsComposable(icon = R.drawable.timer, value = viewModel.timer, onValueChangedEvent = { viewModel.timer = it }, placeholder = "Hora", conDescription = "timer icon", modifier = Modifier.fillMaxWidth().padding(15.dp, 0.dp))
-                    DynamicSelectTextField(viewModel.status, viewModel.listStatus, {viewModel.status = it}, Modifier)
+                    DynamicSelectTextFieldComposable(viewModel.status, viewModel.listStatus, {viewModel.status = it}, Modifier)
                 }
                 Row {
                     SaveButton(navController, "Criar tarefa", viewModel.isDone) { viewModel.insertTodo() }
                 }
                 ShowDialogComposable(viewModel.showDialog){ viewModel.showDialog = false }
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun DynamicSelectTextField(
-    selectedValue: String,
-    options: List<String>,
-    onValueChangedEvent: (String) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    CRUDTheme {
-        var expanded by remember { mutableStateOf(false) }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(15.dp, 0.dp, 0.dp, 0.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
-        ) {
-            Icon(painter = painterResource(id = R.drawable.filter_list), contentDescription = "filter icon")
-            ExposedDropdownMenuBox(
-                expanded = expanded,
-                onExpandedChange = { expanded = !expanded },
-                modifier = modifier
-            ) {
-                OutlinedTextField(
-                    readOnly = true,
-                    value = selectedValue,
-                    onValueChange = {},
-                    textStyle = MaterialTheme.typography.titleMedium,
-                    trailingIcon = {
-                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-                    },
-                    placeholder =  { Text("Status", style = MaterialTheme.typography.titleSmall) },
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color.Transparent, unfocusedBorderColor = Color.Transparent, disabledBorderColor = Color.Transparent
-                    ),
-                    modifier = Modifier
-                        .menuAnchor()
-                        .fillMaxWidth()
-                )
-                ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-                    options.forEach { option: String ->
-                        DropdownMenuItem(
-                            text = { Text(text = option,  style = MaterialTheme.typography.titleMedium) },
-                            onClick = {
-                                expanded = false
-                                onValueChangedEvent(option)
-                            }
-                        )
-                    }
-                }
             }
         }
     }

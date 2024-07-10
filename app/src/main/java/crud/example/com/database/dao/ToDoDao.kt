@@ -14,7 +14,10 @@ interface ToDoDao {
     fun findAll(): Flow<List<tb_todo_list>>
 
     @Query("SELECT * FROM tb_todo_list WHERE id = :id")
-    fun getById(id: String): Flow<tb_todo_list>
+    fun getById(id: String): tb_todo_list
+
+    @Query("SELECT * FROM tb_todo_list")
+    fun findAllList(): List<tb_todo_list>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(todo: tb_todo_list)
