@@ -17,8 +17,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import crud.example.com.ui.navigation.createScreenRoute
 import crud.example.com.ui.navigation.createViewNavigation
-import crud.example.com.ui.navigation.deleteScreenRoute
-import crud.example.com.ui.navigation.deleteViewNavigation
 import crud.example.com.ui.navigation.editScreenRoute
 import crud.example.com.ui.navigation.editViewNavigation
 import crud.example.com.ui.navigation.homeScreenNavigation
@@ -52,6 +50,5 @@ fun App() {
         homeScreenNavigation(navController)
         createViewNavigation(navController)
         editViewNavigation(navController)
-        deleteViewNavigation(navController)
     }
 }

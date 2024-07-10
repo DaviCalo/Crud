@@ -1,5 +1,6 @@
 package crud.example.com.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -40,6 +41,7 @@ import com.example.crud.R
 import crud.example.com.ui.components.CardTodo
 import crud.example.com.ui.components.ChoiceSegmentedButton
 import crud.example.com.ui.components.ExtendedActionButton
+import crud.example.com.ui.components.ListAllBeggar
 import crud.example.com.ui.components.TabBar
 import crud.example.com.ui.navigation.createScreenRoute
 import crud.example.com.ui.theme.CRUDTheme
@@ -52,36 +54,26 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun HomeView(navController: NavController){
     val viewModel = koinViewModel<HomeViewModel>()
-    val scope = rememberCoroutineScope()
     CRUDTheme {
         Scaffold(
-            modifier = Modifier.background(MaterialTheme.colorScheme.background).systemBarsPadding(),
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.background)
+                .systemBarsPadding(),
             topBar = { TabBar() },
+            bottomBar = { ChoiceSegmentedButton(onChoiceOneClicked = { viewModel.selectedItem = 1 }, onChoiceSecondClicked = { viewModel.selectedItem = 2 }, onChoiceThirdClicked = { viewModel.selectedItem = 3})},
             floatingActionButton = { ExtendedActionButton{ navController.navigate(createScreenRoute) { launchSingleTop = true }}},
             floatingActionButtonPosition = FabPosition.End,
             ) { innerPadding ->
             Column(
-                modifier = Modifier.padding(innerPadding).padding(12.dp,0.dp)
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .padding(15.dp, 0.dp)
             ) {
-                ChoiceSegmentedButton(onChoiceOneClicked = { viewModel.selectedItem = 1 }, onChoiceSecondClicked = { viewModel.selectedItem = 2 }, onChoiceThirdClicked = { viewModel.selectedItem = 3})
                 when(viewModel.selectedItem){
-                    1 -> {
-                        CardTodo("Fazer taks", "It is a long established fact that a reader will be distracted by the readable", "Pendente", "10/10/2023", "12:14")
-                        CardTodo("Fazer taks", "It is a long established fact that a reader will be distracted by the readable", "Pendente", "10/10/2023", "12:14")
-                    }
-                    2 -> Text("Alterar")
-                    3 -> Text("Deletar")
+                    1 -> ListAllBeggar(navController, viewModel.selectedItem)
+                    2 -> ListAllBeggar(navController, viewModel.selectedItem)
+                    3 -> ListAllBeggar(navController, viewModel.selectedItem)
                 }
-
-//                Button(onClick = {
-//                    scope.launch {
-//                        try{
-//                          viewModel.allTodos
-//                        }catch (e: Exception){
-//                            println(e.message)
-//                        }
-//                    }
-//                }) { Text(text = "Insert") }
             }
         }
     }
@@ -89,6 +81,18 @@ fun HomeView(navController: NavController){
 
 
 
+
+
+
+//Button(onClick = {
+////                    scope.launch {
+////                        try{
+////                          viewModel.allTodos
+////                        }catch (e: Exception){
+////                            println(e.message)
+////                        }
+////                    }
+////                }) { Text(text = "Insert") }
 
 
 //@Preview(

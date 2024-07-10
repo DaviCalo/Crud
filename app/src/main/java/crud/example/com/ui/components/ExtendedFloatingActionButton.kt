@@ -25,7 +25,7 @@ fun ExtendedActionButton(onClick: () -> Unit){
 //    )
     FloatingActionButton(
         onClick = { onClick() },
-        containerColor = MaterialTheme.colorScheme.secondary
+        containerColor = MaterialTheme.colorScheme.primary
     ) {
         Icon(Icons.Filled.Add, "Floating action button.")
     }

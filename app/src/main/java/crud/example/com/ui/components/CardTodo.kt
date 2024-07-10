@@ -13,9 +13,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,18 +31,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.crud.R
 import crud.example.com.ui.theme.CRUDTheme
 import org.koin.core.time.Timer
 
-
 @Composable
-fun CardTodo(title: String, description: String, status: String, data: String, time: String){
+fun CardTodo(
+    title: String,
+    description: String,
+    status: String,
+    data: String,
+    time: String,
+    onEdit: () -> Unit,
+    onDelete: () -> Unit
+){
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
-        targetValue = if (expandedState) 180f else 0f
+        targetValue = if (expandedState) 180f else 0f, label = ""
     )
     CRUDTheme {
         Column(
@@ -67,6 +79,10 @@ fun CardTodo(title: String, description: String, status: String, data: String, t
                         fontSize = 20.sp,
                         style = MaterialTheme.typography.bodySmall
                     )
+                    Icon(painter = painterResource(id = R.drawable.arrow_drop_down),
+                        contentDescription = "arrow icon",
+                        Modifier.rotate(if (expandedState) 180f else 0f)
+                    )
                 }
                 if (expandedState) {
                     Column(
@@ -90,12 +106,13 @@ fun CardTodo(title: String, description: String, status: String, data: String, t
                                 fontSize = 16.sp,
                                 style = MaterialTheme.typography.labelMedium
                             )
-                            Row(
-
-                            ){
+                            Row() {
                                 IconButton(
                                     modifier = Modifier.padding(0.dp),
-                                    onClick = { /* TODO */}
+                                    onClick = {
+                                        onEdit()
+                                        expandedState = !expandedState
+                                    }
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.Edit,
@@ -104,7 +121,10 @@ fun CardTodo(title: String, description: String, status: String, data: String, t
                                 }
                                 IconButton(
                                     modifier = Modifier.padding(0.dp),
-                                    onClick = { /* TODO */}
+                                    onClick = {
+                                        onDelete()
+                                        expandedState = !expandedState
+                                    }
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.Delete,
@@ -121,12 +141,12 @@ fun CardTodo(title: String, description: String, status: String, data: String, t
     }
 }
 
-@Preview(
-    showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_NO,
-    name = "Default Preview Dark"
-)
-@Composable
-fun asd(){
-    CardTodo("Fazer taks", "It is a long established fact that a reader will be distracted by the readable", "Pendente", "10/10/2023", "12:14")
-}
+//@Preview(
+//    showBackground = true,
+//    uiMode = Configuration.UI_MODE_NIGHT_NO,
+//    name = "Default Preview Dark"
+//)
+//@Composable
+//fun asd(){
+//    CardTodo("Fazer taks", "It is a long established fact that a reader will be distracted by the readable", "Pendente", "10/10/2023", "12:14")
+//}

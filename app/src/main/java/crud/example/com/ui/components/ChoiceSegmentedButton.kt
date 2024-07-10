@@ -28,7 +28,7 @@ fun ChoiceSegmentedButton(onChoiceOneClicked: () -> Unit, onChoiceSecondClicked:
     val options = listOf("Pendentes","Progresso","Concluídos")
     CRUDTheme {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(15.dp,5.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -45,7 +45,6 @@ fun ChoiceSegmentedButton(onChoiceOneClicked: () -> Unit, onChoiceSecondClicked:
                         onClick = {
                             selectedItem = index
                             listFun[index]()
-                            println(selectedItem)
                         },
                         shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
                     ) {

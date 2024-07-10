@@ -31,7 +31,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.crud.R
 import crud.example.com.ui.navigation.createScreenRoute
-import crud.example.com.ui.navigation.deleteScreenRoute
 import crud.example.com.ui.navigation.editScreenRoute
 import crud.example.com.ui.navigation.homeScreenRoute
 import crud.example.com.ui.theme.CRUDTheme

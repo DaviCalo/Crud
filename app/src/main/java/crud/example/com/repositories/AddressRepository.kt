@@ -9,8 +9,8 @@ import kotlinx.coroutines.Dispatchers.IO
 class TodoRepository(private val dao: ToDoDao) {
     val allTodos get() = dao.findAll()
 
-    fun getById(id: String){
-        dao.getById(id)
+    suspend fun getById(id: String): TodoModel = withContext(IO) {
+        return@withContext dao.getById(id).toTask()
     }
 
     suspend fun insert(todo: TodoModel) = withContext(IO) {
@@ -24,7 +24,20 @@ class TodoRepository(private val dao: ToDoDao) {
     suspend fun deleteAll() = withContext(IO){
         dao.deleteAll()
     }
+
+    suspend fun findAllList(): List<TodoModel> = withContext(IO){
+        return@withContext dao.findAllList().map { it.toTask() }
+    }
 }
+
+fun tb_todo_list.toTask() = TodoModel(
+    id = this.id,
+    title = this.title,
+    description = this.description,
+    data = this.data,
+    time = this.time,
+    status = this.status
+)
 
 fun TodoModel.toEntity() = tb_todo_list(
     id = this.id,

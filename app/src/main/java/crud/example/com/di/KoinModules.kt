@@ -9,11 +9,13 @@ import crud.example.com.database.ToDoDatabase
 import crud.example.com.repositories.TodoRepository
 import crud.example.com.ui.viewmodels.HomeViewModel
 import crud.example.com.ui.viewmodels.CreateViewModel
+import crud.example.com.ui.viewmodels.EditViewModel
 
 val appModule = module {
     singleOf(::TodoRepository)
     viewModelOf(::HomeViewModel)
     viewModelOf(::CreateViewModel)
+    viewModelOf(::EditViewModel)
 }
 
 val storageModule = module {

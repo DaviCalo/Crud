@@ -27,25 +27,32 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.crud.R
 import crud.example.com.ui.navigation.homeScreenRoute
+import crud.example.com.ui.theme.CRUDTheme
 import java.lang.reflect.Modifier
 
 @Composable
 fun SaveButton(navController: NavController, action: String, isDone: Boolean, onClick: () -> Unit,){
-    if(isDone) {navController.navigate(homeScreenRoute){launchSingleTop = true}}
-    Row(
-        modifier = androidx.compose.ui.Modifier
-            .fillMaxWidth()
-            .padding(15.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Start
-    ) {
-        Button(
-            modifier =  androidx.compose.ui.Modifier
-                .fillMaxWidth().height(45.dp),
-            shape = RoundedCornerShape(10.dp),
-            onClick = { onClick() }
+    CRUDTheme {
+        if(isDone) {navController.navigate(homeScreenRoute){launchSingleTop = true}}
+        Row(
+            modifier = androidx.compose.ui.Modifier
+                .fillMaxWidth()
+                .padding(15.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
         ) {
-            Text(text = action, style = MaterialTheme.typography.bodyMedium, fontSize = 14.sp)
+            Button(
+                modifier = androidx.compose.ui.Modifier
+                    .fillMaxWidth()
+                    .height(45.dp),
+                shape = RoundedCornerShape(10.dp),
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    MaterialTheme.colorScheme.primary
+                ),
+                onClick = { onClick() }
+            ) {
+                Text(text = action, style = MaterialTheme.typography.bodyMedium, fontSize = 14.sp)
+            }
         }
     }
 }
