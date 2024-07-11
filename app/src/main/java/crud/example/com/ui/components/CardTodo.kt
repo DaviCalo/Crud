@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -42,20 +43,22 @@ fun CardTodo(
     onDelete: () -> Unit
 ){
     var expandedState by remember { mutableStateOf(false) }
-    val rotationState by animateFloatAsState(
-        targetValue = if (expandedState) 180f else 0f, label = ""
-    )
+    val rotationState by animateFloatAsState(targetValue = if (expandedState) 180f else 0f, label = "")
     CRUDTheme {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(0.dp, 5.dp)
                 .clip(shape = RoundedCornerShape(12.dp))
-                .border(0.5.dp, MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(12.dp))
+                .border(
+                    0.5.dp,
+                    MaterialTheme.colorScheme.primaryContainer,
+                    RoundedCornerShape(12.dp)
+                )
                 .clickable { expandedState = !expandedState }
         ){
             Column(
-                modifier = Modifier.padding(10.dp),
+                modifier = Modifier.padding(15.dp, 15.dp, 15.dp, 15.dp),
                 verticalArrangement = Arrangement.spacedBy(7.dp)
             ) {
                 Row(
@@ -68,6 +71,8 @@ fun CardTodo(
                         text = title,
                         maxLines = 1,
                         fontSize = 20.sp,
+                        modifier = Modifier.widthIn(max = 300.dp),
+                        softWrap = true,
                         style = MaterialTheme.typography.bodySmall
                     )
                     Icon(painter = painterResource(id = R.drawable.arrow_drop_down),
