@@ -14,15 +14,6 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun ExtendedActionButton(onClick: () -> Unit){
-//    val listState = rememberLazyListState()
-//    val expandedFab by remember { derivedStateOf { listState.firstVisibleItemIndex == 0 } }
-//    androidx.compose.material3.ExtendedFloatingActionButton(
-//        containerColor = MaterialTheme.colorScheme.secondary,
-//        onClick = { onClick() },
-//        expanded = expandedFab,
-//        icon = { Icon(Icons.Filled.Add, "Localized Description") },
-//        text = { Text("Adicionar", style = MaterialTheme.typography.bodyMedium) },
-//    )
     FloatingActionButton(
         onClick = { onClick() },
         containerColor = MaterialTheme.colorScheme.primary

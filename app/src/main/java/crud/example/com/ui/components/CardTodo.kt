@@ -1,23 +1,17 @@
 package crud.example.com.ui.components
 
-import android.content.res.Configuration
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -28,17 +22,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.crud.R
 import crud.example.com.ui.theme.CRUDTheme
-import org.koin.core.time.Timer
 
 @Composable
 fun CardTodo(
@@ -60,7 +51,7 @@ fun CardTodo(
                 .fillMaxWidth()
                 .padding(0.dp, 5.dp)
                 .clip(shape = RoundedCornerShape(12.dp))
-                .border(1.dp, MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(12.dp))
+                .border(0.5.dp, MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(12.dp))
                 .clickable { expandedState = !expandedState }
         ){
             Column(
@@ -140,13 +131,3 @@ fun CardTodo(
         }
     }
 }
-
-//@Preview(
-//    showBackground = true,
-//    uiMode = Configuration.UI_MODE_NIGHT_NO,
-//    name = "Default Preview Dark"
-//)
-//@Composable
-//fun asd(){
-//    CardTodo("Fazer taks", "It is a long established fact that a reader will be distracted by the readable", "Pendente", "10/10/2023", "12:14")
-//}
