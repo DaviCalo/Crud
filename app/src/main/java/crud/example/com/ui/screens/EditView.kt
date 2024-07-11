@@ -49,7 +49,7 @@ fun EditView(navController: NavController, id: String?) {
                     .padding(innerPadding)
                     .fillMaxWidth()
                     .fillMaxHeight()
-                    .padding(6.dp, 0.dp),
+                    .padding(15.dp, 0.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

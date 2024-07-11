@@ -13,6 +13,7 @@ import java.util.UUID
 class EditViewModel(
     private val repository: TodoRepository
 ) : ViewModel() {
+    var id by mutableStateOf("")
     var title by mutableStateOf("")
     var description by mutableStateOf("")
     var data by mutableStateOf("")
@@ -31,8 +32,9 @@ class EditViewModel(
         status = ""
     }
 
-    fun find(id:String){
+    fun find(idTask:String){
         viewModelScope.launch {
+            id = idTask
            edit(id)
         }
     }
@@ -48,6 +50,7 @@ class EditViewModel(
 
     fun insertTodo(){
         if(
+            id.isNotEmpty() &&
             title.isNotEmpty() &&
             description.isNotEmpty() &&
             data.isNotEmpty() &&
@@ -55,7 +58,7 @@ class EditViewModel(
             status.isNotEmpty()
         ){
             viewModelScope.launch {
-                insert(title, description, data, timer, status)
+                insert(id, title, description, data, timer, status)
                 isDone = true
                 println(isDone)
             }
@@ -63,6 +66,7 @@ class EditViewModel(
     }
 
     private suspend fun insert(
+        id: String,
         title: String,
         description: String,
         data: String,
@@ -71,7 +75,7 @@ class EditViewModel(
     ){
         repository.insert(
             TodoModel(
-                id = UUID.randomUUID().toString(),
+                id = id,
                 title = title,
                 description = description,
                 data = data,

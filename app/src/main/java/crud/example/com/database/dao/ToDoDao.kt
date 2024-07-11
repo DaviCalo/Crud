@@ -1,7 +1,6 @@
 package crud.example.com.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -10,9 +9,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ToDoDao {
-    @Query("SELECT * FROM tb_todo_list")
-    fun findAll(): Flow<List<tb_todo_list>>
-
     @Query("SELECT * FROM tb_todo_list WHERE id = :id")
     fun getById(id: String): tb_todo_list
 
@@ -24,9 +20,4 @@ interface ToDoDao {
 
     @Query("DELETE FROM tb_todo_list WHERE id = :id")
     suspend fun delete(id: String)
-
-    @Query("DELETE FROM tb_todo_list")
-    suspend fun deleteAll()
-}
-
-// Responsavel por acessar o banco de dados e falar os comportamentos do banco de dados
+} //Responsavel por acessar o banco de dados e falar os comportamentos do banco de dados

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -49,8 +50,8 @@ fun NavBar(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            IconSelect(widthBackground, heightBackground, selectedItem, 1, onChange = { selectedItem = it }, R.drawable.clock_loader, R.drawable.clock_loader_select,  { onChange(selectedItem)} )
-            IconSelect(widthBackground, heightBackground, selectedItem, 2, onChange = { selectedItem = it }, R.drawable.sync, R.drawable.sync_select, { onChange(selectedItem)})
+            IconSelect(widthBackground, heightBackground, selectedItem, 1, onChange = { selectedItem = it }, R.drawable.clock_loader_2, R.drawable.clock_loader_select_2,  { onChange(selectedItem)} )
+            IconSelect(widthBackground, heightBackground, selectedItem, 2, onChange = { selectedItem = it }, R.drawable.sync_2, R.drawable.sync_select_2, { onChange(selectedItem)})
             IconSelect(widthBackground, heightBackground, selectedItem, 3, onChange = { selectedItem = it }, R.drawable.check_circle, R.drawable.check_circle_select, { onChange(selectedItem)})
         }
     }
@@ -82,9 +83,10 @@ fun IconSelect(
             onClink()
         }) {
             Icon(
-                painter = if (selectedItem == item) painterResource(id = iconSelected) else painterResource(icon),
+                painter = if(selectedItem == item) painterResource(id = iconSelected) else painterResource(icon),
                 contentDescription = "icon",
-                tint = if (selectedItem == item) Color.White else Color.Gray
+                modifier = Modifier.size(30.dp),
+                tint = if(selectedItem == item) Color.White else Color.Gray
             )
         }
     }

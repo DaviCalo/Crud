@@ -41,11 +41,7 @@ fun HomeView(navController: NavController){
                     .padding(innerPadding)
                     .padding(15.dp, 0.dp)
             ) {
-                when(viewModel.selectedItem){
-                    1 -> ListAllBeggar(navController, viewModel.selectedItem)
-                    2 -> ListAllBeggar(navController, viewModel.selectedItem)
-                    3 -> ListAllBeggar(navController, viewModel.selectedItem)
-                }
+                ListAllBeggar(navController, viewModel.selectedItem)
             }
         }
     }
