@@ -9,14 +9,12 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,17 +25,14 @@ import crud.example.com.ui.components.DynamicSelectTextFieldComposable
 import crud.example.com.ui.components.InputTextFieldsComposable
 import crud.example.com.ui.components.SaveButton
 import crud.example.com.ui.components.ShowDialogComposable
-import crud.example.com.ui.components.TabBar
 import crud.example.com.ui.components.TabBarEdit
 import crud.example.com.ui.theme.CRUDTheme
-import crud.example.com.ui.viewmodels.CreateViewModel
 import crud.example.com.ui.viewmodels.EditViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun EditView(navController: NavController, id: String?) {
     val viewModel = koinViewModel<EditViewModel>()
-    val scope = rememberCoroutineScope()
     if (id != null && viewModel.init){
         viewModel.find(id)
         viewModel.init = false
@@ -77,21 +72,8 @@ fun EditView(navController: NavController, id: String?) {
                 Row {
                     SaveButton(navController, "Criar tarefa", viewModel.isDone) { viewModel.insertTodo() }
                 }
-                ShowDialogComposable(viewModel.showDialog){ viewModel.showDialog = false }
             }
+            ShowDialogComposable(viewModel.showDialog){ viewModel.showDialog = false }
         }
     }
 }
-
-
-//
-//@Preview(
-//    showBackground = true,
-//    uiMode = Configuration.UI_MODE_NIGHT_NO,
-//    name = "Default Preview Dark"
-//)
-//@Composable
-//fun PreviewEdit(){
-//    val navController = rememberNavController()
-//    EditView(navController)
-//}

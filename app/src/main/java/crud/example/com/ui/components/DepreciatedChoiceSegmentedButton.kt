@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonColors
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +21,7 @@ import crud.example.com.ui.theme.CRUDTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChoiceSegmentedButton(onChoiceOneClicked: () -> Unit, onChoiceSecondClicked: () -> Unit, onChoiceThirdClicked: () -> Unit){
+fun DepreciatedChoiceSegmentedButton(onChoiceOneClicked: () -> Unit, onChoiceSecondClicked: () -> Unit, onChoiceThirdClicked: () -> Unit){
     var selectedItem by remember { mutableIntStateOf(0) }
     val listFun = listOf(onChoiceOneClicked, onChoiceSecondClicked, onChoiceThirdClicked)
     val options = listOf("Pendentes","Progresso","Concluídos")
