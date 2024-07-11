@@ -11,13 +11,16 @@ import crud.example.com.ui.navigation.createViewNavigation
 import crud.example.com.ui.navigation.editViewNavigation
 import crud.example.com.ui.navigation.homeScreenNavigation
 import crud.example.com.ui.navigation.homeScreenRoute
+import crud.example.com.ui.theme.CRUDTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-           App()
+            CRUDTheme{
+                App()
+            }
         }
     }
 }
