@@ -9,12 +9,12 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun ListAllBeggar(navController: NavController, list: Int){
+fun ListAll(navController: NavController, select: Int){
     val viewModel = koinViewModel<HomeViewModel>()
     val scope = rememberCoroutineScope()
     if (viewModel.listAll != null){
         viewModel.listAll?.forEachIndexed() { _, todo ->
-            if (todo.status == viewModel.listStatus[list-1]){
+            if (todo.status == viewModel.listStatus[select-1]){
                 CardTodo(
                     todo.title,
                     todo.description,
