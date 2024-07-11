@@ -18,6 +18,7 @@ class HomeViewModel(
     var listAll by mutableStateOf<Array<TodoModel>?>(null)
     var listStatus by mutableStateOf(listOf("Pendente", "Em progresso", "Terminado"))
     private val tempList = mutableListOf<TodoModel>()
+    var isShownSearch by mutableStateOf(false)
 
     init {
         viewModelScope.launch {
