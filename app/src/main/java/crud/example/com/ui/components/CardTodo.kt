@@ -51,7 +51,7 @@ fun CardTodo(
                 .padding(0.dp, 5.dp)
                 .clip(shape = RoundedCornerShape(12.dp))
                 .border(
-                    0.5.dp,
+                    0.8.dp,
                     MaterialTheme.colorScheme.primaryContainer,
                     RoundedCornerShape(12.dp)
                 )

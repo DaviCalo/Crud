@@ -40,7 +40,7 @@ fun InputTextFieldsComposable(
                 placeholder =  { Text(placeholder, style = MaterialTheme.typography.titleSmall, fontSize = 18.sp) },
                 modifier = Modifier.border(1.dp, Color.Transparent),
                 value = value,
-                onValueChange = { onValueChangedEvent(it) },
+                onValueChange = { onValueChangedEvent(it.replaceFirstChar(Char::titlecase)) },
                 colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = Color.Transparent, unfocusedBorderColor = Color.Transparent, disabledBorderColor = Color.Transparent)
             )
         }

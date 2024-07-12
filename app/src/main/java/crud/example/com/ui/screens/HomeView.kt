@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.FabPosition
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -50,7 +51,7 @@ fun HomeView(navController: NavController){
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())
                     .padding(innerPadding)
-                    .padding(15.dp, 0.dp)
+                    .padding(15.dp, 0.dp),
             ) {
                 Text(
                     text = when (viewModel.selectedItem) {

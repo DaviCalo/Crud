@@ -18,7 +18,7 @@ class CreateViewModel(
     var data by mutableStateOf("")
     var timer by mutableStateOf("")
     var status by mutableStateOf("")
-    var listStatus by mutableStateOf(listOf("Pendente", "Em progresso", "Terminado"))
+    var listStatus by mutableStateOf(listOf("Pendente", "Em progresso", "Concluído"))
     var isDone by mutableStateOf(false)
     var isId by mutableStateOf(false)
     var showDialog by mutableStateOf(false)

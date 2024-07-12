@@ -32,28 +32,11 @@ fun SuggestionChipExample(
         label = {
             Text(label)
         },
-        border = FilterChipDefaults.filterChipBorder(selected, selected,
-            borderColor = Color.Red,
-            borderWidth = 1.dp
-        ),
         colors = FilterChipDefaults.filterChipColors(
             selectedContainerColor = MaterialTheme.colorScheme.surface,
             disabledLabelColor = MaterialTheme.colorScheme.primary,
             selectedLabelColor = MaterialTheme.colorScheme.primary,
         ),
         selected = selected,
-        leadingIcon = if (selected) {
-            {
-                Icon(
-                    imageVector = Icons.Filled.Done,
-                    contentDescription = "Done icon",
-                    tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(FilterChipDefaults.IconSize)
-                )
-            }
-        } else {
-            null
-        },
     )
-
 }

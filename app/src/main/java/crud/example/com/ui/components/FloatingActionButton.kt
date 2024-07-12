@@ -6,6 +6,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun ExtendedActionButton(onClick: () -> Unit){
@@ -13,6 +14,6 @@ fun ExtendedActionButton(onClick: () -> Unit){
         onClick = { onClick() },
         containerColor = MaterialTheme.colorScheme.primary
     ) {
-        Icon(Icons.Filled.Add, "Floating action button.", tint = MaterialTheme.colorScheme.surface)
+        Icon(Icons.Filled.Add, "Floating action button.", tint = Color.White)
     }
 }

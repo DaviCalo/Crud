@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.AlertDialog
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,7 +40,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
@@ -48,6 +53,7 @@ import crud.example.com.ui.theme.CRUDTheme
 import crud.example.com.ui.viewmodels.HomeViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
+import java.util.Locale
 
 @Composable
 fun DialogSearch(
@@ -90,35 +96,39 @@ fun DialogSearch(
                                         )
                                     }
                                 },
-                                textStyle = MaterialTheme.typography.labelSmall,
+                                textStyle = MaterialTheme.typography.labelSmall.copy(
+                                    fontSize = 16.sp
+                                ),
                                 maxLines = 3,
-                                placeholder =  { Text(text = "Procure uma tarefa", style = MaterialTheme.typography.labelMedium) },
+                                placeholder =  { Text(text = "Procure uma tarefa", style = MaterialTheme.typography.labelMedium.copy( fontSize = 16.sp)) },
                                 modifier = Modifier
                                     .border(1.dp, Color.Transparent)
                                     .padding(4.dp),
                                 value = viewModel.search,
                                 onValueChange = {
-                                    viewModel.search = it
+                                    viewModel.search = it.replaceFirstChar(Char::titlecase)
                                     viewModel.search(viewModel.search)
                                 },
                                 colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = Color.Transparent, unfocusedBorderColor = Color.Transparent, disabledBorderColor = Color.Transparent)
                             )
                         }
                         HorizontalDivider()
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(15.dp,0.dp)
-                                .background(MaterialTheme.colorScheme.surface)
-                        ) {
-                            viewModel.listStatus.forEachIndexed() { _, status ->
-                                SuggestionChipExample(onClick = { /*TODO*/ }, label = status)
-                            }
-                        }
+//                        Row(
+//                            modifier = Modifier
+//                                .fillMaxWidth()
+//                                .padding(15.dp, 0.dp)
+//                                .background(MaterialTheme.colorScheme.surface),
+//                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+//                        ) {
+//                            viewModel.listStatus.forEachIndexed() { _, status ->
+//                                SuggestionChipExample(onClick = { /*TODO*/ }, label = status)
+//                            }
+//                       }
+                        Spacer(modifier = Modifier.height(5.dp))
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(15.dp,0.dp)
+                                .padding(15.dp, 0.dp)
                                 .fillMaxHeight()
                         ){
                             viewModel.filteredTodo.forEachIndexed() { _, todo ->
@@ -128,9 +138,10 @@ fun DialogSearch(
                                     todo.status,
                                     todo.data,
                                     todo.time,
-                                    { navController.navigate("$editScreenRoute/${todo.id}"){
-                                        launchSingleTop = true
-                                    } },
+                                    {
+                                        navController.navigate("$editScreenRoute/${todo.id}"){ launchSingleTop = true }
+                                        onDismissRequest(false)
+                                    },
                                     { scope.launch{viewModel.delete(todo.id)} }
                                 )
                             }
