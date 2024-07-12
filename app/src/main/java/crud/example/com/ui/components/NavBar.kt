@@ -2,6 +2,7 @@ package crud.example.com.ui.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -44,9 +45,10 @@ fun NavBar(
     ) {
         Row(
             Modifier
+                .border(0.5.dp, Color.Gray, RoundedCornerShape(35.dp))
                 .clip(RoundedCornerShape(35.dp))
                 .background(MaterialTheme.colorScheme.surface)
-                .padding(2.dp),
+                .padding(5.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
