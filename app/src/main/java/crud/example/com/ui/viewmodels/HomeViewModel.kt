@@ -18,12 +18,23 @@ class HomeViewModel(
     var listAll by mutableStateOf<Array<TodoModel>?>(null)
     var listStatus by mutableStateOf(listOf("Pendente", "Em progresso", "Terminado"))
     private val tempList = mutableListOf<TodoModel>()
-    var isShownSearch by mutableStateOf(false)
+    var isShownSearch by mutableStateOf(true)
+    var filteredTodo = mutableListOf<TodoModel>()
+    var search by mutableStateOf("")
 
     init {
         viewModelScope.launch {
             findAllTask()
+            search("")
         }
+    }
+
+    fun search(
+        search: String
+    ){
+        filteredTodo = if(search.isNotEmpty()){
+            listAll?.filter { it.title.contains(search) }!!.toMutableList()
+        } else listAll?.toMutableList()!!
     }
 
     private suspend fun findAllTask(){
@@ -31,13 +42,13 @@ class HomeViewModel(
             val listResult = repository.findAllList()
             for (i in listResult.indices){
                 tempList.add(listResult[i])
-                println("${tempList[i].title} home-viewModel ")
             }
             listAll = tempList.toTypedArray()
         }catch (e:Exception){
             println(e.message)
         }
     }
+
     suspend fun delete(id: String){
         repository.delete(id)
         listAll = listAll?.filter{it.id != id }!!.toTypedArray()

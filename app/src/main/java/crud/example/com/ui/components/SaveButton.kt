@@ -38,7 +38,7 @@ fun SaveButton(navController: NavController, action: String, isDone: Boolean, on
                 ),
                 onClick = { onClick() }
             ) {
-                Text(text = action, style = MaterialTheme.typography.bodyMedium, fontSize = 14.sp)
+                Text(text = action, style = MaterialTheme.typography.bodyMedium, fontSize = 14.sp, color = MaterialTheme.colorScheme.surface)
             }
         }
     }

@@ -1,4 +1,4 @@
-package crud.example.com.ui.components
+package crud.example.com.ui.components.depreciated
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

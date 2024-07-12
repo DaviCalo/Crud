@@ -45,7 +45,7 @@ fun NavBar(
         Row(
             Modifier
                 .clip(RoundedCornerShape(35.dp))
-                .background(Color(0Xff1E1E1E))
+                .background(MaterialTheme.colorScheme.surface)
                 .padding(2.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween

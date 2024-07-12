@@ -54,9 +54,9 @@ fun HomeView(navController: NavController){
             ) {
                 Text(
                     text = when (viewModel.selectedItem) {
-                        1 -> stringResource(R.string.home_screem_one)
-                        2 -> stringResource(R.string.home_screem_second)
-                        else -> stringResource(R.string.home_screem_third)
+                        1 -> stringResource(R.string.home_screen_one)
+                        2 -> stringResource(R.string.home_screen_second)
+                        else -> stringResource(R.string.home_screen_third)
                     },
                     fontSize = 16.sp, style = MaterialTheme.typography.labelMedium
                 )
@@ -80,6 +80,6 @@ fun HomeView(navController: NavController){
                 }
             }
         }
-        DialogSearch(modifier = Modifier,viewModel.isShownSearch) { viewModel.isShownSearch = it }
+        DialogSearch(modifier = Modifier, navController,viewModel.isShownSearch) { viewModel.isShownSearch = it }
     }
 }
