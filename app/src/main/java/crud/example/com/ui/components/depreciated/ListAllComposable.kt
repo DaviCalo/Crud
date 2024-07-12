@@ -1,8 +1,9 @@
-package crud.example.com.ui.components
+package crud.example.com.ui.components.depreciated
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavController
+import crud.example.com.ui.components.CardTodo
 import crud.example.com.ui.navigation.editScreenRoute
 import crud.example.com.ui.viewmodels.HomeViewModel
 import kotlinx.coroutines.launch

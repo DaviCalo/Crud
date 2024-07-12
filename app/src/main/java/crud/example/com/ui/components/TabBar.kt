@@ -31,7 +31,7 @@ fun TabBar(
                 .padding(15.dp, 5.dp),
             contentAlignment = Alignment.Center
         ){
-            Text(text = "ToDo", fontSize = 20.sp, style = MaterialTheme.typography.bodySmall, modifier = Modifier.align(Alignment.CenterStart))
+            Text(text = "ToDo", fontSize = 20.sp, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.align(Alignment.CenterStart))
             IconButton(onClick = { onClick() }, modifier = Modifier.align(Alignment.CenterEnd)) {
                 Icon(
                     painter = painterResource(id = R.drawable.icon_search),
@@ -42,57 +42,3 @@ fun TabBar(
         }
     }
 }
-
-
-//@Composable
-//fun TabBar(navController: NavController?, screen: Int){
-//    var selectedItem by remember { mutableIntStateOf(screen) }
-//    val items = listOf("Home", "Criar","Alterar", "Deletar")
-//    val itemsIcon = listOf(R.drawable.icon_home, R.drawable.icon_pen, R.drawable.iconicon_email, R.drawable.icon_person)
-//    val navigates = listOf(homeScreenRoute, createScreenRoute, editScreenRoute, deleteScreenRoute)
-//    CRUDTheme {
-//        NavigationBar(
-//            containerColor = Color.Transparent,
-//        ){
-//            items.forEachIndexed { index, item ->
-//                NavigationBarItem(
-//                    icon = { Icon(painter = painterResource(itemsIcon[index]), contentDescription = item) },
-//                    label = {
-//                        if (selectedItem == index){
-//                            Text(item, style = MaterialTheme.typography.bodyMedium)
-//                        }else  Text(item, style = MaterialTheme.typography.labelLarge)
-//                    },
-//                    colors = NavigationBarItemDefaults.colors(
-//                        selectedIconColor = MaterialTheme.colorScheme.primary,
-//                        selectedTextColor=  MaterialTheme.colorScheme.onPrimary,
-//                        indicatorColor = MaterialTheme.colorScheme.secondary,
-//                        unselectedIconColor = MaterialTheme.colorScheme.onSecondary,
-//                        unselectedTextColor = MaterialTheme.colorScheme.onSecondary,
-//                    ),
-//                    selected = selectedItem == index,
-//                    onClick = {
-//                        if (selectedItem != index){
-//                            navController?.navigate(navigates[index]){
-//                                launchSingleTop = true
-//                            }
-//                        }
-//                        selectedItem = index
-//                    }
-//                )
-//            }
-//        }
-//    }
-//}
-
-//
-//@Preview(
-//    showBackground = true,
-//    backgroundColor = 5,
-//    uiMode = Configuration.UI_MODE_NIGHT_YES,
-//    name = "Default Preview Dark"
-//)
-//@Composable
-//fun PreviewTabBar(){
-//    val navController = rememberNavController()
-//    TabBar(navController, 0)
-//}

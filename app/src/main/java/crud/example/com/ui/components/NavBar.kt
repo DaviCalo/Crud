@@ -45,14 +45,14 @@ fun NavBar(
         Row(
             Modifier
                 .clip(RoundedCornerShape(35.dp))
-                .background(Color(0Xff1E1E1E))
+                .background(MaterialTheme.colorScheme.surface)
                 .padding(2.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            IconSelect(widthBackground, heightBackground, selectedItem, 1, onChange = { selectedItem = it }, R.drawable.clock_loader_2, R.drawable.clock_loader_select_2,  { onChange(selectedItem)} )
-            IconSelect(widthBackground, heightBackground, selectedItem, 2, onChange = { selectedItem = it }, R.drawable.sync_2, R.drawable.sync_select_2, { onChange(selectedItem)})
-            IconSelect(widthBackground, heightBackground, selectedItem, 3, onChange = { selectedItem = it }, R.drawable.check_circle, R.drawable.check_circle_select, { onChange(selectedItem)})
+            IconSelect(widthBackground, heightBackground, selectedItem, 1, onChange = { selectedItem = it }, R.drawable.clock_loader, R.drawable.clock_loader_select,  { onChange(selectedItem)} )
+            IconSelect(widthBackground, heightBackground, selectedItem, 2, onChange = { selectedItem = it }, R.drawable.sync, R.drawable.sync_select, { onChange(selectedItem)})
+            IconSelect(widthBackground, heightBackground, selectedItem, 3, onChange = { selectedItem = it }, R.drawable.check_circle, R.drawable.check_circle_select_2, { onChange(selectedItem)})
         }
     }
 }

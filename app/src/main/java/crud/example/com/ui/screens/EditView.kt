@@ -58,11 +58,10 @@ fun EditView(navController: NavController, id: String?) {
                         textStyle = MaterialTheme.typography.titleLarge,
                         singleLine = true,
                         maxLines = 1,
-                        placeholder =  { Text("Título",
-                        style = MaterialTheme.typography.titleLarge) },
+                        placeholder =  { Text("Título", style = MaterialTheme.typography.titleLarge) },
                         modifier = Modifier.border(1.dp, Color.Transparent),
                         value = viewModel.title,
-                        onValueChange = { viewModel.title = it },
+                        onValueChange = { viewModel.title = it.replaceFirstChar(kotlin.Char::titlecase) },
                         colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = Color.Transparent, unfocusedBorderColor = Color.Transparent, disabledBorderColor = Color.Transparent)
                     )
                     InputTextFieldsComposable(icon = R.drawable.notes, value = viewModel.description, onValueChangedEvent = { viewModel.description = it }, placeholder = "Descrição", conDescription = "description icon", modifier = Modifier.fillMaxWidth().padding(15.dp, 0.dp))
@@ -71,7 +70,7 @@ fun EditView(navController: NavController, id: String?) {
                     DynamicSelectTextFieldComposable(viewModel.status, viewModel.listStatus, {viewModel.status = it}, Modifier)
                 }
                 Row {
-                    SaveButton(navController, "Criar tarefa", viewModel.isDone) { viewModel.insertTodo() }
+                    SaveButton(navController, "Editar tarefa", viewModel.isDone) { viewModel.insertTodo() }
                 }
             }
             ShowDialogComposable(viewModel.showDialog){ viewModel.showDialog = false }

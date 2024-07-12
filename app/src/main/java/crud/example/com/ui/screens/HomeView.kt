@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.FabPosition
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -50,13 +51,13 @@ fun HomeView(navController: NavController){
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())
                     .padding(innerPadding)
-                    .padding(15.dp, 0.dp)
+                    .padding(15.dp, 0.dp),
             ) {
                 Text(
                     text = when (viewModel.selectedItem) {
-                        1 -> stringResource(R.string.home_screem_one)
-                        2 -> stringResource(R.string.home_screem_second)
-                        else -> stringResource(R.string.home_screem_third)
+                        1 -> stringResource(R.string.home_screen_one)
+                        2 -> stringResource(R.string.home_screen_second)
+                        else -> stringResource(R.string.home_screen_third)
                     },
                     fontSize = 16.sp, style = MaterialTheme.typography.labelMedium
                 )
@@ -80,6 +81,6 @@ fun HomeView(navController: NavController){
                 }
             }
         }
-        DialogSearch(modifier = Modifier,viewModel.isShownSearch) { viewModel.isShownSearch = it }
+        DialogSearch(modifier = Modifier, navController,viewModel.isShownSearch) { viewModel.isShownSearch = it }
     }
 }
