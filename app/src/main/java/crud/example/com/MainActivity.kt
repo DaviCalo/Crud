@@ -8,17 +8,19 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import crud.example.com.ui.navigation.createViewNavigation
-import crud.example.com.ui.navigation.deleteViewNavigation
 import crud.example.com.ui.navigation.editViewNavigation
 import crud.example.com.ui.navigation.homeScreenNavigation
 import crud.example.com.ui.navigation.homeScreenRoute
+import crud.example.com.ui.theme.CRUDTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-           App()
+            CRUDTheme{
+                App()
+            }
         }
     }
 }
@@ -30,6 +32,5 @@ fun App() {
         homeScreenNavigation(navController)
         createViewNavigation(navController)
         editViewNavigation(navController)
-        deleteViewNavigation(navController)
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
 }
 
 android {
@@ -47,6 +48,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -69,4 +71,27 @@ dependencies {
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Room
+    implementation("androidx.room:room-runtime:2.6.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+    ksp("androidx.room:room-compiler:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
+
+    // Koin
+    implementation(libs.koin.android)
+    implementation(libs.insert.koin.koin.android)
+    implementation("io.insert-koin:koin-android:3.4.0")
+    implementation("io.insert-koin:koin-androidx-compose:3.4.0")
+
+//    // Retrofit
+//    implementation(libs.retrofit)
+//    implementation(libs.retrofit2.kotlin.coroutines.adapter)
+
+//    //Gson
+//    implementation(libs.converter.gson)
+
+//    // Serialization
+//    implementation(libs.kotlinx.serialization.json)
+//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }
